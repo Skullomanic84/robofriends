@@ -3,6 +3,7 @@ import './App.css';
 import CardList from './Components/CardList';
 import { robots } from './Components/robots'
 import SearchBox from './Components/SearchBox';
+import Scroll from './Components/Scroll';
 
 class App extends Component {
 
@@ -19,16 +20,19 @@ onSearchChange =(event) => {
 }
 
   render(){
-
-    const filteredRobots = this.robots.filter(robots =>{
-      return robots.className.toLowerCase().includes(this.state.searchField.toLowerCase())
+      const { robots, searchField } = this.state;
+      const filteredRobots = robots.filter(robot => {
+      return robot.name.toLowerCase().includes(searchField.toLowerCase())
      })
 
     return (
       <div className="tc">
-        <h1>Robot friends</h1>
+        <h1 className='f1'>Robot friends</h1>
         <SearchBox searchChange={this.state.onSearchChange}/>
+        <Scroll>
         <CardList robots={filteredRobots} />
+        </Scroll>
+        
       </div>
     );
   }
