@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Card from './Components/Card';
+import 'tachyons';
 
 function App() {
   return (
